@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gourav ❤️ Sonia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#ff758c,#ff7eb3);color:#fff;text-align:center;overflow-x:hidden}
+#welcomeScreen{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#ff4f81,#ff7eb3);z-index:9999}
+button{padding:14px 28px;border:none;border-radius:40px;margin:10px;font-weight:bold;cursor:pointer}
+#mainWebsite{display:none}
+section{padding:50px 20px}
+.card{max-width:850px;margin:auto;background:rgba(255,255,255,.15);padding:25px;border-radius:20px;backdrop-filter:blur(8px)}
+.photos{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.photos img{width:220px;height:280px;object-fit:cover;border-radius:20px;border:4px solid #fff}
+.slider img{width:260px;height:320px;object-fit:cover;border-radius:20px}
+.flight{font-size:42px;position:relative;animation:fly 8s linear infinite}
+@keyframes fly{0%{left:-40%}50%{left:40%}100%{left:-40%}}
+#typewriter{font-size:1.2rem;min-height:90px}
+.heart{position:fixed;top:-20px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh);opacity:0}}
+</style>
+</head>
+<body>
+
+<div id="welcomeScreen">
+<h1>Aap Kiski Ho? ❤️</h1>
+<button onclick="enterLove()">❤️ Gourav Ki</button>
+<button onclick="wrongAnswer()">😏 Kisi Ki Nahi</button>
+<p id="wrong"></p>
+</div>
+
+<div id="mainWebsite">
+
+<section>
+<h1>Gourav ❤️ Sonia</h1>
+<p id="typewriter"></p>
+</section>
+
+<section class="photos">
+<img src="gourav.jpg">
+<img src="sonia.jpg">
+</section>
+
+<section>
+<div class="card">
+<h2>❤️ Relationship Started</h2>
+<p>5 June 2026</p>
+<h3 id="days"></h3>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>📍 Bareilly ↔ Alipurduar</h2>
+<p>Approx Distance: 1050 KM</p>
+<div class="flight">✈️ ❤️</div>
+</div>
+</section>
+
+<section>
+<div class="card slider">
+<h2>📸 Our Gallery</h2>
+<img id="slide" src="gourav.jpg">
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>💌 From Gourav To Sonia</h2>
+<p>
+Kabhi kabhi lagta hai ki 1050 kilometer bahut zyada hote hain,
+lekin phir tumhara ek message poore din ko achha bana deta hai.
+Distance ne hume alag shehron me rakha hai, lekin meri har subah aur
+har raat me tum ho. Main bas itna chahta hoon ki ek din ye distance
+sirf ek purani kahani ban kar reh jaye aur hum saath baith kar is
+website par hans sakein.
+</p>
+</div>
+</section>
+
+<section>
+<h2>✨ Future Together ✨</h2>
+<h3>✈️ Distance ➜ 🫂 Meeting ➜ 🤝 Holding Hands ➜ 🏡 Future</h3>
+</section>
+
+<section>
+<div class="card">
+<p>Chahe kitni bhi doori ho, meri favourite notification hamesha tumhara message hi rahega. ❤️</p>
+<button onclick="showSecret()">Ek Last Cheez...</button>
+<div id="secret" style="display:none;margin-top:20px">
+<p>Agar tum yahan tak pahunch gayi ho, to bas itna kehna hai ki main tumse bahut pyaar karta hoon ❤️</p>
+<audio controls>
+<source src="voice.mp3" type="audio/mpeg">
+</audio>
+</div>
+</div>
+</section>
+
+</div>
+
+<audio id="loveAudio">
+<source src="iloveyou.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function enterLove(){
+welcomeScreen.style.display='none';
+mainWebsite.style.display='block';
+loveAudio.play();
+}
+function wrongAnswer(){
+wrong.innerHTML='❌ Galat Jawab! Tum Sirf Gourav Ki Ho ❤️';
+}
+function showSecret(){secret.style.display='block';}
+
+const text="Distance sirf maps par hai, dilon ke beech nahi. ❤️";
+let i=0;
+setInterval(()=>{
+if(i<text.length){typewriter.innerHTML+=text.charAt(i);i++;}
+},60);
+
+const start=new Date("2026-06-05");
+function upd(){
+let d=Math.floor((new Date()-start)/86400000);
+days.innerHTML=d+" Days Together ❤️";
+}
+upd();
+
+let imgs=["gourav.jpg","sonia.jpg"];
+let s=0;
+setInterval(()=>{
+s=(s+1)%imgs.length;
+slide.src=imgs[s];
+},2500);
+
+setInterval(()=>{
+let h=document.createElement('div');
+h.className='heart';
+h.innerHTML='❤️';
+h.style.left=Math.random()*100+'vw';
+h.style.animationDuration=(3+Math.random()*4)+'s';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),7000);
+},400);
+</script>
+</body>
+</html>
